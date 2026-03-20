@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMonetiza | IA para generar ingresos online</title>
+  <meta name="description" content="AIMonetiza: guías prácticas y profesionales sobre inteligencia artificial aplicada a la generación de ingresos online. Artículos, recursos y estrategias para empezar desde cero." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a33;
+      --panel2:#172246;
+      --text:#edf2ff;
+      --muted:#b9c4e5;
+      --line:rgba(255,255,255,.08);
+      --primary:#6aa7ff;
+      --accent:#9be7c4;
+      --shadow:0 16px 40px rgba(0,0,0,.28);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      color:var(--text);
+      line-height:1.65;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(106,167,255,.18), transparent 26%),
+        radial-gradient(circle at 88% 18%, rgba(155,231,196,.12), transparent 20%),
+        linear-gradient(180deg,#0a1021 0%,#0d1530 100%);
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter:blur(14px);
+      background:rgba(8,12,28,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      min-height:78px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.03em; font-size:1.08rem;
+    }
+    .mark{
+      width:14px; height:14px; border-radius:4px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      box-shadow:0 0 0 6px rgba(106,167,255,.12);
+    }
+    .links{
+      display:flex; gap:22px; color:var(--muted); font-weight:600;
+    }
+    .links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 22px; border-radius:14px;
+      font-weight:700; border:1px solid transparent;
+      transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),#4a85ff);
+      color:#081122;
+      box-shadow:0 14px 30px rgba(74,133,255,.28);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line);
+      color:var(--text);
+    }
+
+    .hero{padding:76px 0 34px}
+    .hero-grid{
+      display:grid; grid-template-columns:1.05fr .95fr; gap:34px; align-items:center;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 14px; border-radius:999px;
+      background:rgba(106,167,255,.09);
+      border:1px solid rgba(106,167,255,.22);
+      color:#a6c8ff; font-size:14px; font-weight:700;
+    }
+    h1{
+      margin:18px 0 16px;
+      font-size:clamp(2.5rem,5vw,4.9rem);
+      line-height:.98; letter-spacing:-.05em;
+    }
+    .hero p{
+      margin:0 0 24px;
+      max-width:62ch; color:var(--muted); font-size:1.08rem;
+    }
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:28px}
+    .metrics{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:28px;
+    }
+    .metric{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:18px; padding:18px; box-shadow:var(--shadow);
+    }
+    .metric strong{display:block; font-size:1.35rem}
+    .metric span{color:var(--muted); font-size:.92rem}
+
+    .visual{
+      min-height:470px;
+      border-radius:28px; overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(106,167,255,.18), rgba(255,255,255,.02)),
+        linear-gradient(135deg,#18244d,#0b1020 70%);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .window{
+      height:100%;
+      border-radius:20px;
+      background:rgba(8,13,31,.72);
+      border:1px solid rgba(255,255,255,.08);
+      padding:22px;
+    }
+    .dots{display:flex; gap:8px; margin-bottom:18px}
+    .dot{width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,.26)}
+    .mini{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:16px; padding:16px; margin-bottom:14px;
+    }
+    .mini h4,.mini p{margin:0}
+    .mini p{margin-top:8px; color:var(--muted)}
+    .bars{
+      display:grid; grid-template-columns:repeat(7,1fr); gap:10px;
+      height:150px; align-items:end; margin:16px 0 20px;
+    }
+    .bar{
+      border-radius:10px 10px 4px 4px;
+      background:linear-gradient(180deg,#9ccbff,var(--primary));
+    }
+
+    section{padding:72px 0}
+    .head{margin-bottom:28px}
+    .head h2{
+      margin:12px 0 10px;
+      font-size:clamp(1.8rem,3vw,2.8rem);
+      letter-spacing:-.03em;
+    }
+    .head p{color:var(--muted); max-width:72ch}
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 10px; font-size:1.15rem}
+    .card p{margin:0; color:var(--muted)}
+
+    .article-list{display:grid; gap:18px}
+    .article-card{
+      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:start;
+    }
+    .article-card p{margin:8px 0 0}
+    .tag{
+      display:inline-block; margin-top:12px;
+      font-size:.86rem; font-weight:700; color:#a6c8ff;
+    }
+
+    .tools{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+
+    .cta{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:22px; align-items:center;
+      background:linear-gradient(135deg, rgba(106,167,255,.16), rgba(155,231,196,.08));
+      border:1px solid var(--line); border-radius:30px; padding:34px; box-shadow:var(--shadow);
+    }
+    .cta h2{margin:0 0 12px; font-size:clamp(1.8rem,3vw,2.7rem)}
+    .cta p{margin:0; color:var(--muted)}
+
+    ul{padding-left:20px}
+    li{margin:8px 0; color:var(--muted)}
+
+    footer{
+      padding:34px 0 56px; border-top:1px solid var(--line); color:var(--muted);
+    }
+    .footer-grid{display:grid; grid-template-columns:1.2fr .9fr .9fr; gap:20px}
+    .footer-links{display:grid; gap:10px}
+
+    @media (max-width:980px){
+      .hero-grid,.grid3,.tools,.cta,.footer-grid{grid-template-columns:1fr}
+      .metrics{grid-template-columns:1fr 1fr}
+      .article-card{grid-template-columns:1fr}
+      .links{display:none}
+    }
+    @media (max-width:640px){
+      .metrics{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="mark"></span> AIMonetiza</a>
+      <nav class="links" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#empieza">Empieza aquí</a>
+        <a href="#guias">Guías</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#legal">Legal</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-primary" href="#guias">Ver guías</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">IA aplicada a ingresos online</span>
+          <h1>Cómo ganar dinero con IA desde cero</h1>
+          <p>AIMonetiza es una web orientada a explicar, de forma clara y profesional, cómo utilizar la inteligencia artificial para crear contenido, desarrollar productos digitales, mejorar servicios y construir fuentes de ingresos online sostenibles.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#guias">Explorar artículos</a>
+            <a class="btn btn-secondary" href="sobre-mi.html">Sobre el proyecto</a>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>10</strong><span>artículos publicados</span></div>
+            <div class="metric"><strong>4</strong><span>páginas legales</span></div>
+            <div class="metric"><strong>1</strong><span>proyecto temático unificado</span></div>
+            <div class="metric"><strong>SEO</strong><span>enfoque editorial consistente</span></div>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="window">
+            <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="mini">
+              <h4>Objetivo del sitio</h4>
+              <p>Publicar contenido útil, estructurado y progresivo sobre monetización con inteligencia artificial, evitando promesas irreales y priorizando un enfoque práctico.</p>
+            </div>
+            <div class="bars" aria-hidden="true">
+              <div class="bar" style="height:32%"></div>
+              <div class="bar" style="height:42%"></div>
+              <div class="bar" style="height:51%"></div>
+              <div class="bar" style="height:58%"></div>
+              <div class="bar" style="height:68%"></div>
+              <div class="bar" style="height:80%"></div>
+              <div class="bar" style="height:92%"></div>
+            </div>
+            <div class="mini">
+              <h4>Estructura editorial</h4>
+              <p>Artículos pilar, tutoriales, comparativas, ideas de negocio, prompts, productos digitales y páginas legales separadas para aportar mayor solidez al proyecto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="empieza">
+      <div class="container">
+        <div class="head">
+          <span class="pill">Empieza aquí</span>
+          <h2>Qué ofrece esta web</h2>
+          <p>La home está diseñada para presentar un proyecto real: una propuesta clara, una estructura visual profesional, artículos enlazados individualmente y una base informativa suficiente para que el usuario entienda el enfoque del sitio desde la primera visita.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <h3>Guías paso a paso</h3>
+            <p>Artículos con enfoque formativo para personas que quieren entender cómo usar la IA dentro de una estrategia digital realista.</p>
+          </div>
+          <div class="card">
+            <h3>Modelos de monetización</h3>
+            <p>Contenido orientado a servicios, blogs, prompts, productos digitales y uso profesional de herramientas como ChatGPT.</p>
+          </div>
+          <div class="card">
+            <h3>Base seria de proyecto</h3>
+            <p>Páginas legales separadas, página “Sobre el proyecto”, contacto visible y una navegación clara para mejorar la percepción general del sitio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guias">
+      <div class="container">
+        <div class="head">
+          <span class="pill">Guías y artículos</span>
+          <h2>Contenido principal publicado</h2>
+          <p>Estos artículos trabajan diferentes intenciones de búsqueda relacionadas con monetización, herramientas, productos digitales, servicios y aprendizaje práctico dentro del entorno de la inteligencia artificial.</p>
+        </div>
+
+        <div class="article-list">
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo1.html">Cómo ganar dinero con IA en 2026</a></h3>
+              <p>Guía principal sobre enfoques reales de monetización, construcción progresiva de un negocio digital y papel estratégico de la inteligencia artificial.</p>
+              <span class="tag">Artículo pilar · SEO informacional</span>
+            </div>
+            <a class="btn btn-primary" href="articulo1.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo2.html">10 formas reales de ganar dinero con ChatGPT</a></h3>
+              <p>Usos prácticos y monetizables de ChatGPT en contenidos, servicios, productos digitales y construcción de activos propios.</p>
+              <span class="tag">ChatGPT · monetización</span>
+            </div>
+            <a class="btn btn-primary" href="articulo2.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo3.html">Cómo crear un ebook con IA y venderlo paso a paso</a></h3>
+              <p>Guía tutorial sobre nicho, estructura, redacción asistida, diseño, publicación y promoción de un producto digital simple.</p>
+              <span class="tag">Producto digital · tutorial</span>
+            </div>
+            <a class="btn btn-primary" href="articulo3.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo4.html">Cómo ganar dinero con IA sin inversión</a></h3>
+              <p>Enfoque para principiantes que desean comenzar con recursos limitados, utilizando tiempo, aprendizaje y servicios sencillos como capital inicial.</p>
+              <span class="tag">Long tail · principiantes</span>
+            </div>
+            <a class="btn btn-primary" href="articulo4.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo5.html">Las mejores herramientas de IA para monetizar online</a></h3>
+              <p>Artículo comparativo sobre categorías de herramientas útiles para texto, diseño, automatización y organización dentro de un sistema rentable.</p>
+              <span class="tag">Herramientas · comparativo</span>
+            </div>
+            <a class="btn btn-primary" href="articulo5.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo6.html">Ideas de negocio con inteligencia artificial</a></h3>
+              <p>Selección de modelos razonables para crear una actividad digital basada en contenido, recursos, formación o automatización sencilla.</p>
+              <span class="tag">Ideas · negocio digital</span>
+            </div>
+            <a class="btn btn-primary" href="articulo6.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo7.html">Cómo crear prompts efectivos que aporten valor</a></h3>
+              <p>Explicación práctica sobre cómo diseñar prompts útiles, claros y orientados a resultados consistentes dentro de tareas específicas.</p>
+              <span class="tag">Prompts · formación</span>
+            </div>
+            <a class="btn btn-primary" href="articulo7.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo8.html">Cómo crear un blog rentable con IA</a></h3>
+              <p>Artículo centrado en la creación de un blog temático, selección de nicho, contenido y monetización progresiva con una lógica de activo digital.</p>
+              <span class="tag">Blog · SEO</span>
+            </div>
+            <a class="btn btn-primary" href="articulo8.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo9.html">Errores al usar IA para ganar dinero</a></h3>
+              <p>Resumen de errores comunes que frenan resultados: falta de validación, exceso de dependencia de herramientas y ausencia de especialización.</p>
+              <span class="tag">Errores · aprendizaje</span>
+            </div>
+            <a class="btn btn-primary" href="articulo9.html">Leer</a>
+          </article>
+
+          <article class="card article-card">
+            <div>
+              <h3><a href="articulo10.html">Estrategia real para monetizar con IA</a></h3>
+              <p>Visión general de una estrategia de crecimiento basada en validación inicial, desarrollo de contenidos y escalado progresivo.</p>
+              <span class="tag">Estrategia · monetización</span>
+            </div>
+            <a class="btn btn-primary" href="articulo10.html">Leer</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="herramientas">
+      <div class="container">
+        <div class="head">
+          <span class="pill">Herramientas</span>
+          <h2>Áreas preparadas para futuras ampliaciones</h2>
+          <p>Esta sección permite ordenar la temática del sitio y deja espacio para añadir en el futuro comparativas, análisis, recomendaciones y recursos más profundos.</p>
+        </div>
+        <div class="tools">
+          <div class="card">
+            <h3>Texto y contenidos</h3>
+            <p>Herramientas útiles para redactar borradores, estructurar artículos, crear guiones y acelerar la producción editorial.</p>
+          </div>
+          <div class="card">
+            <h3>Diseño y materiales</h3>
+            <p>Recursos visuales para portadas, ebooks, documentos descargables y elementos que aumenten la percepción de profesionalidad.</p>
+          </div>
+          <div class="card">
+            <h3>Automatización</h3>
+            <p>Aplicable en fases posteriores, cuando el proyecto ya tenga procesos repetitivos que merezca la pena optimizar.</p>
+          </div>
+          <div class="card">
+            <h3>Organización</h3>
+            <p>Planificación, estructura y consistencia: una parte clave para transformar herramientas en resultados reales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="legal">
+      <div class="container">
+        <div class="head">
+          <span class="pill">Base legal y confianza</span>
+          <h2>Páginas informativas del sitio</h2>
+          <p>Estas páginas ayudan a que la web parezca más completa y organizada. Deben mantenerse accesibles desde la home y desde el pie de página.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <h3><a href="sobre-mi.html">Sobre el proyecto</a></h3>
+            <p>Presentación del enfoque editorial de AIMonetiza y del propósito general de la web.</p>
+          </div>
+          <div class="card">
+            <h3><a href="privacidad.html">Política de privacidad</a></h3>
+            <p>Información general sobre datos, finalidad del sitio y derechos básicos de la persona usuaria.</p>
+          </div>
+          <div class="card">
+            <h3><a href="cookies.html">Política de cookies</a></h3>
+            <p>Descripción general del uso de cookies técnicas, analíticas y posibles servicios de terceros.</p>
+          </div>
+          <div class="card">
+            <h3><a href="aviso-legal.html">Aviso legal</a></h3>
+            <p>Condiciones generales de uso, finalidad informativa del contenido y limitaciones de responsabilidad.</p>
+          </div>
+          <div class="card">
+            <h3><a href="contacto.html">Contacto</a></h3>
+            <p>Página de contacto general del proyecto con email visible y finalidad básica de comunicación.</p>
+          </div>
+          <div class="card">
+            <h3>Estado del proyecto</h3>
+            <p>Web temática orientada a contenido, todavía en crecimiento, con potencial de ampliación editorial y técnica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <span class="pill">Contacto y enfoque</span>
+            <h2>Un proyecto en fase de crecimiento, ya con estructura seria</h2>
+            <p>La prioridad de AIMonetiza es ofrecer contenido útil y mantener una línea temática coherente sobre monetización con inteligencia artificial. El siguiente paso natural sería seguir mejorando profundidad, calidad visual y especialización de algunos artículos.</p>
+          </div>
+          <div class="card">
+            <h3>Datos del proyecto</h3>
+            <ul>
+              <li>Marca: AIMonetiza</li>
+              <li>Email: sgpgutifr@gmail.com</li>
+              <li>País: España</li>
+              <li>Temática: IA y generación de ingresos online</li>
+            </ul>
+            <a class="btn btn-primary" href="contacto.html">Ir a contacto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="mark"></span> AIMonetiza</div>
+        <p>Guías profesionales sobre inteligencia artificial aplicada a la generación de ingresos online.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#guias">Guías</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="sobre-mi.html">Sobre el proyecto</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
